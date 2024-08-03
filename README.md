@@ -40,11 +40,14 @@ cd stock-trading-bot
 pip install -r requirements.txt
 Usage
 
-## Data Preparation: Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
+## Data Preparation: 
+Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
 
-## Running the Models: You can run the setup.ipynb Jupyter notebook to train the models and make predictions. The notebook includes detailed steps for data preprocessing, model training, and evaluation.
+## Running the Models: 
+You can run the setup.ipynb Jupyter notebook to train the models and make predictions. The notebook includes detailed steps for data preprocessing, model training, and evaluation.
 
-## Gradio Interface: Launch the Gradio interface for an interactive experience.
+## Gradio Interface: 
+Launch the Gradio interface for an interactive experience.
 
 bash
 Copy code
