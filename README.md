@@ -65,7 +65,7 @@ The interface also includes a chatbot for quick stock-related queries.
 
 
 
-##Evaluation Metrics
+## Evaluation Metrics
 
 The models were evaluated using the following metrics:
 
