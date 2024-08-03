@@ -16,14 +16,21 @@ Deployment: Created a Gradio interface for user interaction and prediction visua
 
 ## Pre-Trained Models
 ResNet50: Link to Keras Documentation
+
 InceptionV3: Link to Keras Documentation
+
 DenseNet121: Link to Keras Documentation
-Features
+
+## Features
 Stock Price Prediction: Predict future stock prices based on historical data.
+
 Custom and Pre-Trained Models: Utilize both custom CNN and pre-trained models.
+
 Ensemble Learning: Combine predictions from multiple models for improved accuracy.
+
 User Interface: Interactive Gradio interface for easy user interaction.
-Installation
+
+## Installation
 To get started, clone the repository and install the required packages.
 
 bash
@@ -32,11 +39,12 @@ git clone https://github.com/your-username/stock-trading-bot.git
 cd stock-trading-bot
 pip install -r requirements.txt
 Usage
-Data Preparation: Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
 
-Running the Models: You can run the setup.ipynb Jupyter notebook to train the models and make predictions. The notebook includes detailed steps for data preprocessing, model training, and evaluation.
+## Data Preparation: Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
 
-Gradio Interface: Launch the Gradio interface for an interactive experience.
+## Running the Models: You can run the setup.ipynb Jupyter notebook to train the models and make predictions. The notebook includes detailed steps for data preprocessing, model training, and evaluation.
+
+## Gradio Interface: Launch the Gradio interface for an interactive experience.
 
 bash
 Copy code
