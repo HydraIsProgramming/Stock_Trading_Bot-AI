@@ -33,12 +33,14 @@ User Interface: Interactive Gradio interface for easy user interaction.
 ## Installation
 To get started, clone the repository and install the required packages.
 
-bash
 Copy code
-git clone https://github.com/your-username/stock-trading-bot.git
-cd stock-trading-bot
-pip install -r requirements.txt
-Usage
+
+1) git clone https://github.com/your-username/stock-trading-bot.git
+
+2) cd stock-trading-bot
+
+3) pip install -r requirements.txt
+
 
 ## Data Preparation: 
 Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
@@ -49,22 +51,34 @@ You can run the setup.ipynb Jupyter notebook to train the models and make predic
 ## Gradio Interface: 
 Launch the Gradio interface for an interactive experience.
 
-bash
-Copy code
-python app.py
 Gradio Interface
+
 The Gradio interface allows users to:
 
 Select a stock symbol.
+
 Set initial capital, start, and end dates.
+
 View predicted prices, plots, and trading decisions.
+
 The interface also includes a chatbot for quick stock-related queries.
-Evaluation Metrics
+
+
+
+##Evaluation Metrics
+
 The models were evaluated using the following metrics:
 
+
 Mean Squared Error (MSE)
+
 Mean Absolute Error (MAE)
+
 R-squared (R²)
+
 Confusion Matrix
+
 ROC Curve
+
 Precision-Recall Curve
+
