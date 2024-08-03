@@ -15,11 +15,11 @@ Deployment: Created a Gradio interface for user interaction and prediction visua
 
 
 ## Pre-Trained Models
-ResNet50: Link to Keras Documentation
+ResNet50: (https://keras.io/api/applications/resnet/#resnet50-function)
 
-InceptionV3: Link to Keras Documentation
+InceptionV3: https://keras.io/api/applications/inceptionv3/
 
-DenseNet121: Link to Keras Documentation
+DenseNet121: https://keras.io/api/applications/densenet/#densenet121-function
 
 ## Features
 Stock Price Prediction: Predict future stock prices based on historical data.
