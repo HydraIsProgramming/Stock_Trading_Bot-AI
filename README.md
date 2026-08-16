@@ -1,84 +1,115 @@
-## Stock Trading Bot with Deep Learning
-Introduction
-This project explores the application of deep learning techniques to predict stock prices. We developed a custom Convolutional Neural Network (CNN) and experimented with pre-trained models like ResNet50, InceptionV3, and DenseNet121. The goal is to predict stock prices based on historical market data and make informed trading decisions. This repository includes the implementation of the models, data preprocessing, evaluation, and deployment using a user-friendly interface.
+# MarketSignal Intelligence Lab
 
-## Database
-1) Install Kaggle Dataset from https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset
-2) pip install -r requirements.txt to install all dependencies
+An interactive machine learning workbench for comparing price-forecasting models, inspecting technical signals, and evaluating a rules-based strategy on data the models did not see during training.
 
+[Open the deployed demo](https://stock-trading-bot-ai.onrender.com)
 
-## Project Phases
-Custom CNN Model: Developed a CNN model to predict stock prices from historical market data.
-Pre-Trained Models: Fine-tuned pre-trained models (ResNet50, InceptionV3, DenseNet121) for stock price prediction.
-Ensemble Model: Combined predictions from multiple models using an ensemble approach.
-Deployment: Created a Gradio interface for user interaction and prediction visualization.
+> This is an educational research project. It uses deterministic simulated markets, does not connect to a brokerage, and is not financial advice.
 
+## Why this project exists
 
-## Pre-Trained Models
-ResNet50: (https://keras.io/api/applications/resnet/#resnet50-function)
+Market forecasting demos can look convincing while hiding data leakage, weak evaluation, or unrealistic profitability assumptions. MarketSignal Lab makes those decisions visible. It preserves time order, compares every model with a naive previous-close baseline, includes trading costs, and reports when a selected model does not beat the baseline.
 
-InceptionV3: https://keras.io/api/applications/inceptionv3/
+## Interactive features
 
-DenseNet121: https://keras.io/api/applications/densenet/#densenet121-function
+- Compare Random Forest, Gradient Boosting, and Ridge Regression forecasts
+- Adjust the held-out test window, starting capital, signal threshold, and transaction cost
+- Review MAE, RMSE, R-squared, and directional accuracy in one leaderboard
+- Inspect actual versus predicted prices, SMA9/SMA21 signals, feature importance, and strategy equity
+- Compare the signal strategy with buy-and-hold over the same test period
+- Review recent enter and exit decisions, total return, and maximum drawdown
 
-## Features
-Stock Price Prediction: Predict future stock prices based on historical data.
+## Evaluation workflow
 
-Custom and Pre-Trained Models: Utilize both custom CNN and pre-trained models.
+```text
+Deterministic market series
+        |
+        v
+Lagged feature engineering
+        |
+        v
+Chronological train/test split
+        |
+        v
+Three regressors + previous-close baseline
+        |
+        v
+Held-out metrics and strategy simulation
+```
 
-Ensemble Learning: Combine predictions from multiple models for improved accuracy.
+The feature pipeline uses the current close, daily return, SMA9, SMA21, EMA12, five-day momentum, ten-day volatility, relative volume, and distance from the longer moving average. The target is the next closing price. Earlier observations train the model; later observations form the unseen evaluation window.
 
-User Interface: Interactive Gradio interface for easy user interaction.
+## Tech stack
 
-## Installation
-To get started, clone the repository and install the required packages.
+- Python 3.11
+- Gradio
+- pandas and NumPy
+- scikit-learn
+- Matplotlib
+- Render
 
-Copy code
+## Run the recruiter demo locally
 
-1) git clone https://github.com/your-username/stock-trading-bot.git
+```bash
+git clone https://github.com/HydraIsProgramming/Stock_Trading_Bot-AI.git
+cd Stock_Trading_Bot-AI
+python -m venv .venv
+```
 
-2) cd stock-trading-bot
+Activate the environment:
 
-3) pip install -r requirements.txt
+```bash
+# macOS/Linux
+source .venv/bin/activate
 
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+```
 
-## Data Preparation: 
-Ensure that the stock data is available in the archive/stocks directory. Each stock's data should be in a separate CSV file with the stock symbol as the filename.
+Install and launch:
 
-## Running the Models: 
-You can run the setup.ipynb Jupyter notebook to train the models and make predictions. The notebook includes detailed steps for data preprocessing, model training, and evaluation.
+```bash
+python -m pip install -r requirements.txt
+python app.py
+```
 
-## Gradio Interface: 
-Launch the Gradio interface for an interactive experience.
+Open `http://localhost:7860`. The application requires no API keys, GPU, network data feed, or model download.
 
-Gradio Interface
+## Original coursework
 
-The Gradio interface allows users to:
+`setup.ipynb` contains the original group research project. It explored a custom one-dimensional CNN and image-based transfer-learning experiments with ResNet50, InceptionV3, and DenseNet121 using historical stock CSV files from the [Kaggle Stock Market Dataset](https://www.kaggle.com/datasets/jacksoncrow/stock-market-dataset).
 
-Select a stock symbol.
+The deployable `app.py` is a later recruiter-facing evolution of that work. It uses lightweight tabular models and bundled simulations so the evaluation is reproducible and the demo can run without the large external dataset. `requirements-legacy.txt` records the notebook's original, much larger environment.
 
-Set initial capital, start, and end dates.
+## My contribution
 
-View predicted prices, plots, and trading decisions.
+This was a group coursework project. My work included:
 
-The interface also includes a chatbot for quick stock-related queries.
+- Implementing SMA9 and SMA21 indicators
+- Improving the plots and Gradio workflow
+- Helping repair multi-stock dataset handling
+- Coordinating delivery and keeping the team aligned
+- Building the current evaluation-focused demo from the original project
 
+Project team: Ranjot Sandhu, Usama Mohiuddin, Rupesh Rangwani, and Rishubh Gusain.
 
+## Repository guide
 
-## Evaluation Metrics
+| Path | Purpose |
+| --- | --- |
+| `app.py` | Self-contained Gradio recruiter demo |
+| `requirements.txt` | Minimal deployment dependencies |
+| `render.yaml` | Render service configuration |
+| `setup.ipynb` | Original deep-learning coursework notebook |
+| `requirements-legacy.txt` | Original notebook environment |
+| `CP468 Stock Market AI Report.docx` | Project report |
+| `CP468- Artificial Intelligence Spring 2024-Project (1).pdf` | Assignment brief |
 
-The models were evaluated using the following metrics:
+## Limitations
 
+- The deployed markets are simulations, not live or historical securities.
+- Backtest results are illustrative and are not evidence of future performance.
+- The notebook experiments are preserved as coursework and should not be interpreted as a validated trading system.
+- The application has no order execution, portfolio custody, authentication, or brokerage integration.
 
-Mean Squared Error (MSE)
-
-Mean Absolute Error (MAE)
-
-R-squared (R²)
-
-Confusion Matrix
-
-ROC Curve
-
-Precision-Recall Curve
-
+See [README_DEPLOY.md](README_DEPLOY.md) for deployment notes.
